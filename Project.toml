@@ -1,0 +1,18 @@
+name = "QuantumRelay"
+uuid = "6ebb60ca-bbd7-403d-b18d-7027df4c80f9"
+version = "0.1.0"
+
+[deps]
+Clp = "e2554f3b-3117-50c0-817c-e040a3ddf72d"
+Distributions = "31c24e10-a181-5473-b8eb-7969acd0382f"
+GSL = "92c85e6c-cbff-5e0c-80f7-495c94daaecd"
+IterTools = "c8e1da08-722c-5040-9ed9-7db0dc04731e"
+JuMP = "4076af6c-e467-56ae-b986-b466b2749572"
+LLLplus = "142c1900-a1c3-58ae-a66d-b187f9ca6423"
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+Mamba = "5424a776-8be3-5c5b-a13f-3551f69ba0e6"
+Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"
+PyCall = "438e738f-606a-5dbb-bf0a-cddfbfd45ab0"
+PyPlot = "d330b81b-6aea-500a-939a-2ce795aea3ee"
+SmithNormalForm = "ba71f38f-f508-439b-ac77-437f86a20aa1"
+SymPy = "24249f21-da20-56a4-8eb1-6a02cf4ae2e6"

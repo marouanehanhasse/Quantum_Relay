@@ -9,7 +9,8 @@ using GSL
 using PyPlot
 using Mamba
 using Distributions
-using LinearAlgebra, SmithNormalForm
+using LinearAlgebra
+using SmithNormalForm
 
 export
 	qrelay_op,
