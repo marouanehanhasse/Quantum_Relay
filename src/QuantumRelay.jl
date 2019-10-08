@@ -34,9 +34,9 @@ struct QRelaySampler
     #pdet0: the probability of detection for each detector
 	function QRelaySampler(mat::Array{T, 2}, coef, omega, pdet0) where T <: Int
 		B=smith(mat)
-        U=B.S
-        V=F.T
-        S=diagm(F)
+                U=B.S
+                V=F.T
+                S=diagm(F)
         #the PolyLib returns P=USV. Inverse the matrices so Ui/Vi is the same as U/V in the note (18)
 		Ui = inv(U) 
 		Vi = inv(V)
