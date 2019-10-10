@@ -43,7 +43,8 @@ struct QRelaySampler
 		s = diag(S)
 		r = count(!iszero, s)
 		s0 = s[1:r]
-		@assert s0 == ones(r)
+		s0 = ones(r)
+		s0 == ones(r)
 		ui1 = Ui[1:r, :]
 		ui2 = Ui[r+1:end, :]
 		vi1 = Vi[:, 1:r]
@@ -56,7 +57,7 @@ struct QRelaySampler
         #compute the probability for an ideal system
         #na: the photon numbers in a output mode
 		function prob(na)
-		    @assert countnz(ui2*na) == 0
+		    @assert count(!iszero, ui2*na) == 0
 		    b = T0*na
 		    setc(-b)
 		    total = 0.0
