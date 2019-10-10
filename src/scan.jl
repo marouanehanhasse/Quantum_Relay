@@ -1,6 +1,6 @@
 using JuMP
 function scan_maker(A)
-    m = Model(solver=ClpSolver(PrimalTolerance=1e-3, DualTolerance=1e-3, InfeasibleReturn=1, PresolveType=1))
+    m = JuMP.Model(solver=ClpSolver(PrimalTolerance=1e-3, DualTolerance=1e-3, InfeasibleReturn=1, PresolveType=1))
     # m = Model(solver=GurobiSolver())
     level = size(A, 2)
     v = zeros(Int, level)
