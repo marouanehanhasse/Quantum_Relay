@@ -73,7 +73,7 @@ function op_mat(op)
     op_ab = ones(SymPy.Sym, nab)
     coef = zeros(Complex, nab)
     mat = zeros(Int64, length(op_a), nab)
-    for (i, (ps, c)) in enumerate(op[:as_dict]())
+    for (i, (ps, c)) in enumerate(op.as_dict())
         for (j, p) in enumerate(ps)
             mat[j, i] = p
             op_ab[i] = op_a[j]^p * op_ab[i]
