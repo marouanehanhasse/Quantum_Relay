@@ -67,9 +67,9 @@ function qrelay_op(n, phi, alpha, delta)
 end
 
 function op_mat(op)
-    op = op[:as_poly](domain="C")
-    op_a = op.x[:gens]
-    nab = op[:length]()
+    op = op.as_poly(domain="C")
+    op_a = op.x.gens
+    nab = op.length()
     op_ab = ones(SymPy.Sym, nab)
     coef = zeros(Complex, nab)
     mat = zeros(Int64, length(op_a), nab)
