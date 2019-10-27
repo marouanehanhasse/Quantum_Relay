@@ -78,7 +78,7 @@ function op_mat(op)
             mat[j, i] = p
             op_ab[i] = op_a[j]^p * op_ab[i]
         end
-        coef[i] = c
+        coef[i] = N(c)
     end
    
     return op_a, op_ab, mat, coef
