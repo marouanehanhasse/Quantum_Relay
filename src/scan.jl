@@ -16,7 +16,7 @@ function scan_maker(A)
         end
     end
     
-    function scan()
+    function scan(c::Channel)
         i = 1
         init = 1
         while i > 0
@@ -48,7 +48,7 @@ function scan_maker(A)
             end
 
             if i >= level
-                produce(v)
+                put!(c, v)
                 continue
             else
                 setupperbound(x[i], v[i])
@@ -56,6 +56,7 @@ function scan_maker(A)
                 i += 1
             end
         end
+        close(c)
     end
     
     return setc, scan
