@@ -7,7 +7,7 @@ using IterTools
 using LLLplus
 using GSL
 using PyPlot
-using Turing
+using Mamba
 using Distributions
 using LinearAlgebra
 using SmithNormalForm
