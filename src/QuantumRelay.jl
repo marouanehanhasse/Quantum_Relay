@@ -61,7 +61,7 @@ struct QRelaySampler
 		    b = T0*na
 		    setc(-b)
 		    total = 0.0
-		    for x in Task(scan)
+		    for x in Channel(scan)
 		        nab = vi2*x + b #the photon numbers for each item in the sum in the note (10)
 		        total += prod([c.^complex(n)/factorial(n) for (c, n) in zip(coef, nab)])
 		    end
