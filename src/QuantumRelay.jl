@@ -75,7 +75,7 @@ struct QRelaySampler
 		function prob(q, na, mask)
 		    q0 = round(Int, q.>0)
 		    m0 = round(Int, mask)
-		    return prod((q0 + (1-2q0).*pdet0(na)).^m0)
+		    return prod((q0 + (1-2q0).*pdt0(na)).^m0)
 		end
 
 		psetproposal(x::Vector) = QuantumRelay.OrthoNNDist(x, ui2oc)
