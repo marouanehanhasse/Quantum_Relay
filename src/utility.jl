@@ -37,7 +37,7 @@ end
 function pdet_maker(eta, pdc)
     a = 1 - pdc
     b = 1 - eta.*a
-    function pdet0(i)
+    function pdt0(i)
         return a .* b.^i
     end
     return pdet0
