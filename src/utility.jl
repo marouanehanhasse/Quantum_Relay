@@ -40,7 +40,7 @@ function pdet_maker(eta, pdc)
     function pdet0(i)
         return a .* b.^i
     end
-    return pdt0
+    return pdet0
 end
 
 function bin2(arr)
