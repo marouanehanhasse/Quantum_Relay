@@ -65,7 +65,7 @@ struct QRelaySampler
 		        nab = vi2*x + b #the photon numbers for each item in the sum in the note (10)
 		        total += prod([c.^complex(n)/factorial(n) for (c, n) in zip(coef, nab)])
 		    end
-		    return abs(total*omega)^2
+		    return abs2.(total*omega)
 		end
 
         #compute the probability of detection
