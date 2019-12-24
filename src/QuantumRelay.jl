@@ -73,7 +73,7 @@ struct QRelaySampler
         #na: the number of photons arrived at detector
         #mask: if there is no detector in this channel, mask=0
 		function prob(q, na, mask)
-		    q0 = round.(Int, q. >0)
+		    q0 = round.(Int, q.>0)
 		    m0 = round.(Int, mask)
 		    return prod((q0 + (one(q0)-2q0).*pdet0(na)).^m0)
 		end
