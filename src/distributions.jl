@@ -23,7 +23,7 @@ end
 
 Base.length(d::OrthoNNDist) = length(d.x0)
 
-Distributions.rand(d::OrthoNNDist, N::Int=1) = rand(d.x1s, N)
+Distributions.rand(d::OrthoNNDist) = rand(d.x1s)
 
 Distributions.pdf(d::OrthoNNDist, x::Vector) = x in d.x1s ? d.prob : 0.0
 Distributions.pdf(d::OrthoNNDist) = fill(d.prob, size(d.x1s))
