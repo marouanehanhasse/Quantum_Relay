@@ -43,8 +43,7 @@ struct QRelaySampler
 		s = diag(S)
 		r = count(!iszero, s)
 		s0 = s[1:r]
-		s0 = ones(r)
-		s0 == ones(r)
+		@assert s0 == ones(r)
 		ui1 = Ui[1:r, :]
 		ui2 = Ui[r+1:end, :]
 		vi1 = Vi[:, 1:r]
