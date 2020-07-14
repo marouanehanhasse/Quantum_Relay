@@ -1,4 +1,5 @@
 using JuMP
+using Clp
 function scan_maker(A)
     m = JuMP.Model(solver=ClpSolver(PrimalTolerance=1e-3, DualTolerance=1e-3, InfeasibleReturn=1, PresolveType=1))
     # m = Model(solver=GurobiSolver())
