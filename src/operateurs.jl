@@ -68,7 +68,7 @@ end
 
 function op_mat(op)
     op = op.as_poly(domain="C")
-    op_a = op.x.gens
+    op_a = op.gens
     nab = op.length()
     op_ab = ones(SymPy.Sym, nab)
     coef = zeros(Complex, nab)
