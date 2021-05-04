@@ -15,6 +15,7 @@ export
 	qrelay_op,
 	op_mat,
 	scan_maker,
+        nonneg,
 	QRelaySampler
 
 include("utility.jl")
