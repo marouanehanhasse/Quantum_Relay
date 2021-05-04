@@ -4,7 +4,8 @@ using LinearAlgebra
 export
     orthocomp,
     pdet_maker,
-    bin2
+    bin2,
+    nonneg
 
 #find the orthogonal complemenet of m
 function orthocomp(m)
