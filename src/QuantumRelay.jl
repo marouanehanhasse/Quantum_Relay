@@ -2,7 +2,7 @@ module QuantumRelay
 
 using SymPy
 using JuMP
-using Clp
+using GLPK
 using IterTools
 using LLLplus
 using GSL
