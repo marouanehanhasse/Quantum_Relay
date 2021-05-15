@@ -51,7 +51,7 @@ struct QRelaySampler
 		vi2 = lll(vi2)[1] #Lenstra–Lenstra–Lovász lattice basis reduction
 		T0 = vi1*ui1
 		ui2oc = orthocomp(ui2) #orhogonal complement
-		ui2oc = convert(Array{Int64}, ui2oc)
+		
 		setc, scan = scan_maker(vi2) #make the scanner for the algorithm1 in the note
         
         #compute the probability for an ideal system
