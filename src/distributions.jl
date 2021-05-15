@@ -1,11 +1,11 @@
 using Distributions
 struct OrthoNNDist <: DiscreteMultivariateDistribution
-	x0::Vector{Int64}
-	oc::Array{Int64,2}
+	x0::Vector{Float64}
+	oc::Array{Float64,2}
 	x1s::Array
 	prob::Float64
     #return a new uniform distribution with all vectors in x1s orthogonal to oc
-	function OrthoNNDist(x0::Vector{Int}, oc::Array{Int,2})
+	function OrthoNNDist(x0::Vector{Float64}, oc::Array{Float64,2})
 		x1s = []
 		for i = 1:size(oc)[2]
 			x1 = x0 + oc[:, i]
