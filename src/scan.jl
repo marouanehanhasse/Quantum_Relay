@@ -1,8 +1,8 @@
+using GLPK
 using JuMP
-using Clp
 function scan_maker(A)
-    m = JuMP.Model(solver=ClpSolver(PrimalTolerance=1e-3, DualTolerance=1e-3, InfeasibleReturn=1, PresolveType=1))
-    # m = Model(solver=GurobiSolver())
+    m= Model(GLPK.Optimizer)
+
     level = size(A, 2)
     v = zeros(Int, level)
     ub = zeros(Int, level)
@@ -11,10 +11,8 @@ function scan_maker(A)
     @variable(m, x[1:level])
     @constraint(m, con, A*x.>=0)
 
-    function setc(c)
-        for i = 1:size(A, 1)
-            m.linconstr[i].lb = float(c[i])
-        end
+    function setc(a)
+        set_normalized_rhs.(con, float.(a))
     end
     
     function scan(c::Channel)
@@ -23,26 +21,26 @@ function scan_maker(A)
         while i > 0
             if i >= init
                 @objective(m, Max, x[i])
-                res = JuMP.solve(m, suppress_warnings=true)
-                if res==:Optimal || res==:Unbounded
+                res = JuMP.optimize!(m)
+                if termination_status(m) == MOI.OPTIMAL || termination_status(m) == MOI.DUAL_INFEASIBLE
                     ub[i] = round(Int, getvalue(x[i]))
-                    setobjectivesense(m, :Min)
-                    res = JuMP.solve(m, suppress_warnings=true)
-                    @assert res==:Optimal || res==:Unbounded
+                    set_objective_sense(m, MOI.MIN_SENSE)
+                    res = JuMP.optimize!(m)
+                    @assert termination_status(m) == MOI.OPTIMAL || termination_status(m) == MOI.DUAL_INFEASIBLE
                     lb[i] = round(Int, getvalue(x[i]))
 
                     v[i] = lb[i]
                     init += 1
                 else
-                    @assert res==:Infeasible
+                    @assert termination_status(m) == MOI.INFEASIBLE
                     i -= 1
                     continue
                 end
             elseif v[i] < ub[i]
                 v[i] += 1
             else
-                setupperbound(x[i], Inf)
-                setlowerbound(x[i], -Inf)
+                set_upper_bound(x[i], Inf)
+                set_lower_bound(x[i], -Inf)
                 init -= 1
                 i -= 1
                 continue
@@ -52,8 +50,8 @@ function scan_maker(A)
                 put!(c, v)
                 continue
             else
-                setupperbound(x[i], v[i])
-                setlowerbound(x[i], v[i])
+                set_upper_bound(x[i], v[i])
+                set_lower_bound(x[i], v[i])
                 i += 1
             end
         end
